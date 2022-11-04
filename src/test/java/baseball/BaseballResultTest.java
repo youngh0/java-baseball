@@ -57,4 +57,23 @@ class BaseballResultTest {
         baseballResult.showResult();
         Assertions.assertThat("낫싱").isEqualTo(out.toString().trim());
     }
+
+    @Test
+    void isThreeStrikeTest() {
+        List<Integer> computerAnswer = new ArrayList<>(List.of(1, 4, 5));
+        List<Integer> playerAnswer = new ArrayList<>(List.of(1, 4, 5));
+
+        BaseballResult baseballResult = new BaseballResult(computerAnswer, playerAnswer);
+        baseballResult.isThreeStrike();
+        Assertions.assertThat(baseballResult.isThreeStrike()).isEqualTo(true);
+    }
+    @Test
+    void isThreeStrikeFailTest() {
+        List<Integer> computerAnswer = new ArrayList<>(List.of(1, 4, 5));
+        List<Integer> playerAnswer = new ArrayList<>(List.of(1, 4, 6));
+
+        BaseballResult baseballResult = new BaseballResult(computerAnswer, playerAnswer);
+        baseballResult.isThreeStrike();
+        Assertions.assertThat(baseballResult.isThreeStrike()).isEqualTo(false);
+    }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class BaseballResult {
     private final int MAX_ANSWER_SIZE = 3;
+    private final int MAX_STRIKE_COUNT = 3;
     private int strikeCount;
     private int ballCount;
 
@@ -23,6 +24,10 @@ public class BaseballResult {
                 ballCount++;
             }
         }
+    }
+
+    public boolean isThreeStrike() {
+        return strikeCount == MAX_STRIKE_COUNT;
     }
 
     public void showResult() {

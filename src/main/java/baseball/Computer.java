@@ -14,6 +14,7 @@ public class Computer {
     }
 
     public List<Integer> generateRandomNums() {
+        computerAnswer.clear();
         while (computerAnswer.size() < MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!computerAnswer.contains(randomNumber)) {

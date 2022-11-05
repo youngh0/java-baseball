@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public class BaseballResult {
     private final int MAX_STRIKE_COUNT = 3;

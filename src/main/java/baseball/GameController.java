@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballResult;
 import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {

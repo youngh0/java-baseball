@@ -1,27 +1,27 @@
 package baseball;
 
+import baseball.domain.BaseballNumber;
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
     private final int MAX_SIZE = 3;
-    List<Integer> computerAnswer;
+    List<Integer> integerNumbers;
 
     public Computer() {
-        computerAnswer = new ArrayList<>();
+        integerNumbers = new ArrayList<>();
     }
 
-    public List<Integer> generateRandomNums() {
-        computerAnswer.clear();
-        while (computerAnswer.size() < MAX_SIZE) {
+    public BaseballNumber generateRandomNums() {
+        integerNumbers.clear();
+        while (integerNumbers.size() < MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerAnswer.contains(randomNumber)) {
-                computerAnswer.add(randomNumber);
+            if (!integerNumbers.contains(randomNumber)) {
+                integerNumbers.add(randomNumber);
             }
         }
-
-        return computerAnswer;
+        return new BaseballNumber(integerNumbers);
     }
+
 }

@@ -1,8 +1,7 @@
 package baseball;
 
+import baseball.domain.BaseballNumber;
 import camp.nextstep.edu.missionutils.Console;
-
-import java.util.List;
 
 public class GameController {
     private final String REPLAY_INPUT_REGEX = "[1-2]{1,1}";
@@ -15,10 +14,10 @@ public class GameController {
     }
 
     public void startGame() {
-        List<Integer> computerAnswer = computer.generateRandomNums();
+        BaseballNumber computerAnswer = computer.generateRandomNums();
         while (true) {
-            List<Integer> integers = player.inputAnswer();
-            BaseballResult baseballResult = new BaseballResult(computerAnswer, integers);
+            BaseballNumber playerInputNumbers = player.inputAnswer();
+            BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputNumbers);
             baseballResult.showResult();
             if (baseballResult.isThreeStrike()) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -31,15 +30,15 @@ public class GameController {
     private void askReplayBaseball() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String playerInput = Console.readLine();
-        if (!checkReplayInputValidation(Console.readLine())) {
-            throw new IllegalArgumentException();
-        }
+        checkReplayInputValidation(playerInput);
         if (playerInput.equals("1")) {
             startGame();
         }
     }
 
-    private boolean checkReplayInputValidation(String replayInput) {
-        return replayInput.matches(REPLAY_INPUT_REGEX);
+    private void checkReplayInputValidation(String replayInput) {
+        if (!replayInput.matches(REPLAY_INPUT_REGEX)) {
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -1,29 +1,13 @@
 package baseball;
 
-import java.util.List;
-
 public class BaseballResult {
-    private final int MAX_ANSWER_SIZE = 3;
     private final int MAX_STRIKE_COUNT = 3;
     private int strikeCount;
     private int ballCount;
 
-    public BaseballResult(List<Integer> computerAnswer, List<Integer> playerAnswer) {
-        judgeBaseballResult(computerAnswer, playerAnswer);
-    }
-
-    private void judgeBaseballResult(List<Integer> computerAnswer, List<Integer> playerAnswer) {
-        strikeCount = 0;
-        ballCount = 0;
-        for (int num = 0; num < MAX_ANSWER_SIZE; num++) {
-            if (playerAnswer.get(num).equals(computerAnswer.get(num))) {
-                strikeCount++;
-                continue;
-            }
-            if (computerAnswer.contains(playerAnswer.get(num))) {
-                ballCount++;
-            }
-        }
+    public BaseballResult(int strikeCount, int ballCount) {
+        this.strikeCount = strikeCount;
+        this.ballCount = ballCount;
     }
 
     public boolean isThreeStrike() {

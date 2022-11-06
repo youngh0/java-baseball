@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballNumberList;
 import baseball.domain.BaseballResult;
 import baseball.inputValidation.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
@@ -17,9 +17,9 @@ public class GameController {
     }
 
     public void startGame() {
-        BaseballNumber computerAnswer = computer.generateRandomNums();
+        BaseballNumberList computerAnswer = computer.generateRandomNums();
         while (true) {
-            BaseballNumber playerInputNumbers = player.inputAnswer();
+            BaseballNumberList playerInputNumbers = player.inputAnswer();
             BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputNumbers);
             baseballResult.showResult();
             if (baseballResult.isThreeStrike()) {

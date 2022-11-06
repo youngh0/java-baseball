@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballNumberList;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Computer {
         integerNumbers = new ArrayList<>();
     }
 
-    public BaseballNumber generateRandomNums() {
+    public BaseballNumberList generateRandomNums() {
         integerNumbers.clear();
         while (integerNumbers.size() < MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -21,7 +21,7 @@ public class Computer {
                 integerNumbers.add(randomNumber);
             }
         }
-        return new BaseballNumber(integerNumbers);
+        return new BaseballNumberList(integerNumbers);
     }
 
 }

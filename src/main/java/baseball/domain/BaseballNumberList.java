@@ -2,14 +2,14 @@ package baseball.domain;
 
 import java.util.List;
 
-public class BaseballNumber {
+public class BaseballNumberList {
     private List<Integer> baseballNumberList;
 
-    public BaseballNumber(List<Integer> baseballNumbers) {
+    public BaseballNumberList(List<Integer> baseballNumbers) {
         baseballNumberList = baseballNumbers;
     }
 
-    public BaseballResult judgeBaseballResult(BaseballNumber playerAnswer) {
+    public BaseballResult judgeBaseballResult(BaseballNumberList playerAnswer) {
         int strikeCount = 0;
         int ballCount = 0;
         for (int num = 0; num < 3; num++) {

@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.BaseballNumber;
+import baseball.domain.BaseballNumberList;
 import baseball.inputValidation.InputValidation;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -14,13 +14,13 @@ public class Player {
         inputValidation = new InputValidation();
     }
 
-    public BaseballNumber inputAnswer() {
+    public BaseballNumberList inputAnswer() {
         System.out.print("숫자를 입력해주세요 : ");
         String nums = Console.readLine();
         inputValidation.validatePlayerInput(nums);
         List<Integer> inputToIntegers = convertStringToIntegerList(nums);
         System.out.println();
-        return new BaseballNumber(inputToIntegers);
+        return new BaseballNumberList(inputToIntegers);
     }
 
     private List<Integer> convertStringToIntegerList(String nums) {

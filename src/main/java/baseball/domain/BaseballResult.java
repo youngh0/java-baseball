@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.view.OutputView;
+
 public class BaseballResult {
     private final int MAX_STRIKE_COUNT = 3;
     private int strikeCount;
@@ -15,16 +17,6 @@ public class BaseballResult {
     }
 
     public void showResult() {
-        StringBuilder resultString = new StringBuilder();
-        if (ballCount > 0) {
-            resultString.append(ballCount).append("볼 ");
-        }
-        if (strikeCount > 0) {
-            resultString.append(strikeCount).append("스트라이크");
-        }
-        if (ballCount + strikeCount == 0) {
-            resultString.append("낫싱");
-        }
-        System.out.println(resultString);
+        OutputView.printBallStrikeCount(strikeCount, ballCount);
     }
 }

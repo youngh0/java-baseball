@@ -36,4 +36,27 @@ class InputValidationTest {
                     () -> inputValidation.validateReplayInputValidation("11"));
         }
     }
+    @Nested
+    class 사용자_정답_입력_유효성_테스트{
+        @Test
+        void 세글자_초과시_예외발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> inputValidation.validatePlayerInput("1234"));
+        }
+        @Test
+        void 세글자_미만시_예외발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> inputValidation.validatePlayerInput("12"));
+        }
+        @Test
+        void 숫자로만_이루어지지_않으면_예외발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> inputValidation.validatePlayerInput("12 "));
+        }
+        @Test
+        void 중복되는_숫자가_있으면_예외발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> inputValidation.validatePlayerInput("122"));
+        }
+    }
 }

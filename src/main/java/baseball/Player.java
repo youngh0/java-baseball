@@ -2,7 +2,7 @@ package baseball;
 
 import baseball.domain.BaseballNumberList;
 import baseball.inputValidation.InputValidation;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,9 @@ public class Player {
     }
 
     public BaseballNumberList inputAnswer() {
-        System.out.print("숫자를 입력해주세요 : ");
-        String nums = Console.readLine();
-        inputValidation.validatePlayerInput(nums);
-        List<Integer> inputToIntegers = convertStringToIntegerList(nums);
+        String playerAnswer = InputView.requestPlayerInput();
+        inputValidation.validatePlayerInput(playerAnswer);
+        List<Integer> inputToIntegers = convertStringToIntegerList(playerAnswer);
         System.out.println();
         return new BaseballNumberList(inputToIntegers);
     }

@@ -3,7 +3,7 @@ package baseball;
 import baseball.domain.BaseballNumberList;
 import baseball.domain.BaseballResult;
 import baseball.inputValidation.InputValidation;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
 
 public class GameController {
     Computer computer;
@@ -31,10 +31,9 @@ public class GameController {
     }
 
     private void askReplayBaseball() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String playerInput = Console.readLine();
-        inputValidation.validateReplayInputValidation(playerInput);
-        if (playerInput.equals("1")) {
+        String playerReplayInput = InputView.askReplay();
+        inputValidation.validateReplayInputValidation(playerReplayInput);
+        if (playerReplayInput.equals("1")) {
             startGame();
         }
     }

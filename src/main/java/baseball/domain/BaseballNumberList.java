@@ -1,12 +1,18 @@
 package baseball.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumberList {
-    private List<Integer> baseballNumberList;
+    private final int BASEBALL_NUMBER_LIST_MAX_SIZE = 3;
+    private List<BaseballNumber> baseballNumberList;
 
     public BaseballNumberList(List<Integer> baseballNumbers) {
-        baseballNumberList = baseballNumbers;
+        if (baseballNumbers.size() != BASEBALL_NUMBER_LIST_MAX_SIZE) {
+            throw new IllegalArgumentException();
+        }
+        baseballNumberList = new ArrayList<>();
+        addBaseballNumber(baseballNumbers);
     }
 
     public BaseballResult judgeBaseballResult(BaseballNumberList playerAnswer) {
@@ -22,5 +28,11 @@ public class BaseballNumberList {
             }
         }
         return new BaseballResult(strikeCount, ballCount);
+    }
+
+    private void addBaseballNumber(List<Integer> baseballNumbers) {
+        for (Integer baseballNumber : baseballNumbers) {
+            baseballNumberList.add(new BaseballNumber(baseballNumber));
+        }
     }
 }

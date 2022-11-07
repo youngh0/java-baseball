@@ -5,9 +5,12 @@ import baseball.domain.BaseballResult;
 import baseball.inputValidation.InputValidation;
 import baseball.view.InputView;
 
+import java.util.List;
+
 public class GameController {
     Computer computer;
     Player player;
+    BaseballNumberList computerAnswer;
 
     public GameController() {
         computer = new Computer();
@@ -15,16 +18,9 @@ public class GameController {
     }
 
     public void startGame() {
-        boolean isContinueGame = true;
-        BaseballNumberList computerAnswer = computer.generateRandomNums();
-        while (isContinueGame) {
-            BaseballNumberList playerInputNumbers = player.inputAnswer();
-            BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputNumbers);
-            baseballResult.showResult();
-            if (baseballResult.isThreeStrike()) {
-                isContinueGame = askReplayBaseball();
-            }
-        }
+        computerAnswer = computer.generateRandomNums();
+        playGame();
+        askReplayBaseball();
     }
 
     private boolean askReplayBaseball() {
@@ -34,5 +30,15 @@ public class GameController {
             startGame();
         }
         return false;
+    }
+
+    private void playGame() {
+        boolean correctAnswer = false;
+        while (!correctAnswer) {
+            List<Integer> playerInputAnswer = player.inputAnswer();
+            BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputAnswer);
+            baseballResult.showResult();
+            correctAnswer = baseballResult.isThreeStrike();
+        }
     }
 }

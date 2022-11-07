@@ -6,6 +6,7 @@ public class BaseballNumber {
     private int number;
 
     public BaseballNumber(int number) {
+        System.out.println("aa");
         this.number = number;
     }
 

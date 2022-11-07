@@ -11,14 +11,14 @@ import static baseball.errorMessages.IllegalExceptionMessage.DIGIT_INCORRECT;
 
 public class Player {
     private final static int PLAYER_ANSWER_CORRECT_SIZE = 3;
-    private final static String PLAYER_ANSWER_REGEX = "^[1-9]*";
+    private final static String PLAYER_ANSWER_REGEX = "^[1-9]*$";
 
-    public BaseballNumberList inputAnswer() {
+    public List<Integer> inputAnswer() {
         String playerAnswer = InputView.requestPlayerInput();
         validatePlayerInput(playerAnswer);
         List<Integer> inputToIntegers = convertStringToIntegerList(playerAnswer);
         validateIsNonDuplicateNums(inputToIntegers);
-        return new BaseballNumberList(inputToIntegers);
+        return inputToIntegers;
     }
 
     public void validatePlayerInput(String inputNumbers) {

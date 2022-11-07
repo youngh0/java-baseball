@@ -3,6 +3,7 @@ package baseball.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -12,7 +13,7 @@ class BaseballResultTest {
     @Test
     void 쓰리스트라이크_테스트() {
         BaseballNumberList computer = new BaseballNumberList(List.of(1, 2, 3));
-        BaseballNumberList player = new BaseballNumberList(List.of(1, 2, 3));
+        List<Integer> player = new ArrayList<>(List.of(1, 2, 3));
 
         BaseballResult baseballResult = computer.judgeBaseballResult(player);
         int strikeCount = baseballResult.getStrikeCount();
@@ -26,7 +27,7 @@ class BaseballResultTest {
     @Test
     void 볼_테스트() {
         BaseballNumberList computer = new BaseballNumberList(List.of(1, 2, 3));
-        BaseballNumberList player = new BaseballNumberList(List.of(4, 3, 5));
+        List<Integer> player = new ArrayList<>(List.of(4, 3, 5));
 
         BaseballResult baseballResult = computer.judgeBaseballResult(player);
         int strikeCount = baseballResult.getStrikeCount();
@@ -40,7 +41,7 @@ class BaseballResultTest {
     @Test
     void 볼_스트라이크_섞인_결과_테스트() {
         BaseballNumberList computer = new BaseballNumberList(List.of(1, 2, 3));
-        BaseballNumberList player = new BaseballNumberList(List.of(3, 2, 6));
+        List<Integer> player = new ArrayList<>(List.of(3, 2, 6));
 
         BaseballResult baseballResult = computer.judgeBaseballResult(player);
         int strikeCount = baseballResult.getStrikeCount();
@@ -54,7 +55,7 @@ class BaseballResultTest {
     @Test
     void 낫싱_테스트() {
         BaseballNumberList computer = new BaseballNumberList(List.of(1, 2, 3));
-        BaseballNumberList player = new BaseballNumberList(List.of(4, 5, 6));
+        List<Integer> player = new ArrayList<>(List.of(4, 5, 6));
 
         BaseballResult baseballResult = computer.judgeBaseballResult(player);
         int strikeCount = baseballResult.getStrikeCount();
@@ -68,7 +69,7 @@ class BaseballResultTest {
     @Test
     void 쓰리스트라이크_여부_테스트() {
         BaseballNumberList computer = new BaseballNumberList(List.of(1, 2, 3));
-        BaseballNumberList player = new BaseballNumberList(List.of(1, 2, 3));
+        List<Integer> player = new ArrayList<>(List.of(1, 2, 3));
 
         BaseballResult baseballResult = computer.judgeBaseballResult(player);
         baseballResult.isThreeStrike();
@@ -78,7 +79,7 @@ class BaseballResultTest {
     @Test
     void 낫쓰리스트라이크_테스트() {
         BaseballNumberList computer = new BaseballNumberList(List.of(1, 2, 3));
-        BaseballNumberList player = new BaseballNumberList(List.of(4, 2, 3));
+        List<Integer> player = new ArrayList<>(List.of(4, 2, 3));
 
         BaseballResult baseballResult = computer.judgeBaseballResult(player);
         baseballResult.isThreeStrike();

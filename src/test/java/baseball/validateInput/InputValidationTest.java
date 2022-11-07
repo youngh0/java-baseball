@@ -39,41 +39,4 @@ class InputValidationTest {
             Assertions.assertEquals(IllegalExceptionMessage.REPLAY_EXCEPTION_MESSAGE, exception.getMessage());
         }
     }
-
-    @Nested
-    class 사용자_정답_입력_유효성_테스트 {
-        @Test
-        void 세글자_초과시_예외발생() {
-            IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
-                    () -> InputValidation.validatePlayerInput("1234"));
-            Assertions.assertEquals(IllegalExceptionMessage.DIGIT_INCORRECT, exception.getMessage());
-        }
-
-        @Test
-        void 세글자_미만시_예외발생() {
-            IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
-                    () -> InputValidation.validatePlayerInput("12"));
-            Assertions.assertEquals(IllegalExceptionMessage.DIGIT_INCORRECT, exception.getMessage());
-        }
-
-        @Test
-        void 숫자로만_이루어지지_않으면_예외발생() {
-            IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
-                    () -> InputValidation.validatePlayerInput("12 "));
-            Assertions.assertEquals(IllegalExceptionMessage.ONLY_NUMBER, exception.getMessage());
-        }
-
-        @Test
-        void 중복되는_숫자가_있으면_예외발생() {
-            IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
-                    () -> InputValidation.validatePlayerInput("122"));
-            Assertions.assertEquals(IllegalExceptionMessage.DUPLICATE_NUMBER, exception.getMessage());
-        }
-        @Test
-        void 범위인_1부터_9를_벗어나면_예외발생() {
-            IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
-                    () -> InputValidation.validatePlayerInput("120"));
-            Assertions.assertEquals(IllegalExceptionMessage.ONLY_NUMBER, exception.getMessage());
-        }
-    }
 }

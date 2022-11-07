@@ -1,9 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.BaseballNumberList;
 import baseball.errorMessages.IllegalExceptionMessage;
-import baseball.view.InputView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +10,9 @@ public class Player {
     private final static int PLAYER_ANSWER_CORRECT_SIZE = 3;
     private final static String PLAYER_ANSWER_REGEX = "^[1-9]*$";
 
-    public List<Integer> inputAnswer() {
-        String playerAnswer = InputView.requestPlayerInput();
-        validatePlayerInput(playerAnswer);
-        List<Integer> inputToIntegers = convertStringToIntegerList(playerAnswer);
+    public List<Integer> inputAnswer(String inputAnswer) {
+        validatePlayerInput(inputAnswer);
+        List<Integer> inputToIntegers = convertStringToIntegerList(inputAnswer);
         validateIsNonDuplicateNums(inputToIntegers);
         return inputToIntegers;
     }

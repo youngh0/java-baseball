@@ -15,23 +15,24 @@ public class GameController {
     }
 
     public void startGame() {
+        boolean isContinueGame = true;
         BaseballNumberList computerAnswer = computer.generateRandomNums();
-        while (true) {
+        while (isContinueGame) {
             BaseballNumberList playerInputNumbers = player.inputAnswer();
             BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputNumbers);
             baseballResult.showResult();
             if (baseballResult.isThreeStrike()) {
-                askReplayBaseball();
-                break;
+                isContinueGame = askReplayBaseball();
             }
         }
     }
 
-    private void askReplayBaseball() {
+    private boolean askReplayBaseball() {
         String playerReplayInput = InputView.askReplay();
         InputValidation.validateReplayInputValidation(playerReplayInput);
         if (playerReplayInput.equals("1")) {
             startGame();
         }
+        return false;
     }
 }

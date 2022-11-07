@@ -8,15 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    InputValidation inputValidation;
-
-    public Player() {
-        inputValidation = new InputValidation();
-    }
-
     public BaseballNumberList inputAnswer() {
         String playerAnswer = InputView.requestPlayerInput();
-        inputValidation.validatePlayerInput(playerAnswer);
+        InputValidation.validatePlayerInput(playerAnswer);
         List<Integer> inputToIntegers = convertStringToIntegerList(playerAnswer);
         System.out.println();
         return new BaseballNumberList(inputToIntegers);

@@ -8,12 +8,10 @@ import baseball.view.InputView;
 public class GameController {
     Computer computer;
     Player player;
-    InputValidation inputValidation;
 
     public GameController() {
         computer = new Computer();
         player = new Player();
-        inputValidation = new InputValidation();
     }
 
     public void startGame() {
@@ -32,7 +30,7 @@ public class GameController {
 
     private void askReplayBaseball() {
         String playerReplayInput = InputView.askReplay();
-        inputValidation.validateReplayInputValidation(playerReplayInput);
+        InputValidation.validateReplayInputValidation(playerReplayInput);
         if (playerReplayInput.equals("1")) {
             startGame();
         }

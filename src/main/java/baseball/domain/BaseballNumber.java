@@ -5,7 +5,7 @@ import java.util.Objects;
 public class BaseballNumber {
     private final int MIN_NUMBER_RANGE = 1;
     private final int MAX_NUMBER_RANGE = 9;
-    int number;
+    private int number;
 
     public BaseballNumber(int number) {
         if (!validateRangeOneToNine(number)) {

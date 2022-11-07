@@ -18,18 +18,18 @@ public class GameController {
     }
 
     public void startGame() {
-        boolean replayGame = false;
-        while(!replayGame){
+        boolean notReplayGame = false;
+        while(!notReplayGame){
             computerAnswer = computer.generateRandomNums();
             playGame();
-            replayGame = askReplayBaseball();
+            notReplayGame = askNotReplayBaseball();
         }
     }
 
-    private boolean askReplayBaseball() {
+    private boolean askNotReplayBaseball() {
         String playerReplayInput = InputView.askReplay();
         InputValidation.validateReplayInputValidation(playerReplayInput);
-        return playerReplayInput.equals("1");
+        return playerReplayInput.equals("2");
     }
 
     private void playGame() {

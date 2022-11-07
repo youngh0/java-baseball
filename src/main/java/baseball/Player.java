@@ -12,7 +12,6 @@ public class Player {
         String playerAnswer = InputView.requestPlayerInput();
         InputValidation.validatePlayerInput(playerAnswer);
         List<Integer> inputToIntegers = convertStringToIntegerList(playerAnswer);
-        System.out.println();
         return new BaseballNumberList(inputToIntegers);
     }
 

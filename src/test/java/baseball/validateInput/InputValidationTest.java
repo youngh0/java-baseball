@@ -12,7 +12,7 @@ class InputValidationTest {
     @Nested
     class 게임_리플레이_입력_테스트 {
         @Test
-        void _0이_들어오면_예외가_발생한다() {
+        void 잘못된_값인_0이_들어오면_예외가_발생한다() {
             IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class,
                     () -> InputValidation.validateReplayInputValidation("0"));
             Assertions.assertEquals(IllegalExceptionMessage.REPLAY_EXCEPTION_MESSAGE, exception.getMessage());

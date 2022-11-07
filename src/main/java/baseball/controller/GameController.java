@@ -4,6 +4,7 @@ import baseball.domain.BaseballNumberList;
 import baseball.domain.BaseballResult;
 import baseball.inputValidation.InputValidation;
 import baseball.view.InputView;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
 
@@ -18,16 +19,18 @@ public class GameController {
     }
 
     public void startGame() {
-        boolean replayGame = false;
-        while(!replayGame){
+        boolean replayGame = true;
+        while(replayGame){
             computerAnswer = computer.generateRandomNums();
+            System.out.println(computerAnswer.toString());
             playGame();
-            replayGame = askReplayBaseball();
+            replayGame = askNotReplayBaseball();
         }
     }
 
-    private boolean askReplayBaseball() {
-        String playerReplayInput = InputView.askReplay();
+    private boolean askNotReplayBaseball() {
+        String playerReplayInput = Console.readLine();
+        InputView.askReplay();
         InputValidation.validateReplayInputValidation(playerReplayInput);
         return playerReplayInput.equals("1");
     }
@@ -35,8 +38,9 @@ public class GameController {
     private void playGame() {
         boolean correctAnswer = false;
         while (!correctAnswer) {
-            List<Integer> playerInputAnswer = player.inputAnswer();
-            BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputAnswer);
+            String playerInputAnswer = Console.readLine();
+            List<Integer> playerAnswers = player.inputAnswer(playerInputAnswer);
+            BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerAnswers);
             baseballResult.showResult();
             correctAnswer = baseballResult.isThreeStrike();
         }

@@ -9,12 +9,8 @@ public class Computer {
     private final int MAX_SIZE = 3;
     List<Integer> integerNumbers;
 
-    public Computer() {
-        integerNumbers = new ArrayList<>();
-    }
-
     public BaseballNumberList generateRandomNums() {
-        integerNumbers.clear();
+        integerNumbers = new ArrayList<>();
         while (integerNumbers.size() < MAX_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             if (!integerNumbers.contains(randomNumber)) {

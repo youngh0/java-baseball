@@ -1,6 +1,9 @@
 package baseball.domain;
 
+import baseball.errorMessages.IllegalExceptionMessage;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class BaseballNumberList {
@@ -8,8 +11,8 @@ public class BaseballNumberList {
     private List<BaseballNumber> baseballNumberList;
 
     public BaseballNumberList(List<Integer> baseballNumbers) {
-        if (baseballNumbers.size() != BASEBALL_NUMBER_LIST_MAX_SIZE) {
-            throw new IllegalArgumentException();
+        if (baseballNumbers.size() != BASEBALL_NUMBER_LIST_MAX_SIZE && new HashSet<>(baseballNumbers).size() != BASEBALL_NUMBER_LIST_MAX_SIZE) {
+            throw new IllegalArgumentException(IllegalExceptionMessage.DIGIT_INCORRECT);
         }
         baseballNumberList = new ArrayList<>();
         addBaseballNumber(baseballNumbers);

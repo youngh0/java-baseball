@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.errorMessages.IllegalExceptionMessage;
+
 import java.util.Objects;
 
 public class BaseballNumber {
@@ -9,7 +11,7 @@ public class BaseballNumber {
 
     public BaseballNumber(int number) {
         if (!validateRangeOneToNine(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(IllegalExceptionMessage.RANGE_OVERFLOW);
         }
         this.number = number;
     }

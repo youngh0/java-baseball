@@ -18,11 +18,6 @@ public class Player {
         validatePlayerInput(playerAnswer);
         List<Integer> inputToIntegers = convertStringToIntegerList(playerAnswer);
         validateIsNonDuplicateNums(inputToIntegers);
-        for (Integer inputToInteger : inputToIntegers) {
-            System.out.print(inputToInteger + " ");
-        }
-        System.out.println();
-
         return new BaseballNumberList(inputToIntegers);
     }
 

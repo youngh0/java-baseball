@@ -22,13 +22,12 @@ public class GameController {
         boolean replayGame = true;
         while(replayGame){
             computerAnswer = computer.generateRandomNums();
-            System.out.println(computerAnswer.toString());
             playGame();
-            replayGame = askNotReplayBaseball();
+            replayGame = askReplayBaseball();
         }
     }
 
-    private boolean askNotReplayBaseball() {
+    private boolean askReplayBaseball() {
         String playerReplayInput = Console.readLine();
         InputView.askReplay();
         InputValidation.validateReplayInputValidation(playerReplayInput);
@@ -38,9 +37,9 @@ public class GameController {
     private void playGame() {
         boolean correctAnswer = false;
         while (!correctAnswer) {
-            String playerInputAnswer = Console.readLine();
-            List<Integer> playerAnswers = player.inputAnswer(playerInputAnswer);
-            BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerAnswers);
+            String playerInput = Console.readLine();
+            List<Integer> playerInputAnswer = player.inputAnswer(playerInput);
+            BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputAnswer);
             baseballResult.showResult();
             correctAnswer = baseballResult.isThreeStrike();
         }

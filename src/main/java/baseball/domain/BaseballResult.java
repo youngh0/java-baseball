@@ -13,7 +13,11 @@ public class BaseballResult {
     }
 
     public boolean isThreeStrike() {
-        return strikeCount == MAX_STRIKE_COUNT;
+        if (strikeCount == MAX_STRIKE_COUNT) {
+            OutputView.printFinishGameString();
+            return true;
+        }
+        return false;
     }
 
     public void showResult() {

@@ -21,7 +21,6 @@ public class GameController {
             BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputNumbers);
             baseballResult.showResult();
             if (baseballResult.isThreeStrike()) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 askReplayBaseball();
                 break;
             }

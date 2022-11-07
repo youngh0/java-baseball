@@ -21,4 +21,8 @@ public class OutputView {
         }
         System.out.println(resultString);
     }
+
+    public static void printFinishGameString() {
+        System.out.println(finishGame);
+    }
 }

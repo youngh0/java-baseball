@@ -16,7 +16,6 @@ public class GameController {
 
     public void startGame() {
         BaseballNumberList computerAnswer = computer.generateRandomNums();
-        System.out.println(computerAnswer.toString());
         while (true) {
             BaseballNumberList playerInputNumbers = player.inputAnswer();
             BaseballResult baseballResult = computerAnswer.judgeBaseballResult(playerInputNumbers);

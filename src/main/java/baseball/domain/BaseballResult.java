@@ -23,4 +23,12 @@ public class BaseballResult {
     public void showResult() {
         OutputView.printBallStrikeCount(strikeCount, ballCount);
     }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
 }

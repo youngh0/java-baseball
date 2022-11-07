@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 import baseball.domain.BaseballNumberList;
 import baseball.domain.BaseballResult;

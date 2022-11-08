@@ -1,7 +1,7 @@
 package baseball;
 
+import baseball.service.GameSettingService;
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,28 +9,21 @@ import java.util.List;
 public class GameController {
     private final static int PLAYER_ANSWER_CORRECT_SIZE = 3;
     private final static String PLAYER_ANSWER_REGEX = "^[1-9]*$";
+    private GameSettingService gameSettingService;
+
+    public GameController() {
+        gameSettingService = new GameSettingService();
+    }
 
     public void startGame() {
         boolean replayGame = true;
         while(replayGame){
-            List<Integer> computerAnswer = generateRandomNums();
+            List<Integer> computerAnswer = gameSettingService.generateRandomThreeNumbers();
             playGame(computerAnswer);
             replayGame = askReplayBaseball();
         }
     }
 
-
-    public List<Integer> generateRandomNums() {
-        int MAX_SIZE = 3;
-        List<Integer> integerNumbers = new ArrayList<>();
-        while (integerNumbers.size() < MAX_SIZE) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!integerNumbers.contains(randomNumber)) {
-                integerNumbers.add(randomNumber);
-            }
-        }
-        return integerNumbers;
-    }
     private void playGame(List<Integer> computerAnswer) {
         List<Integer> baseballResult;
         boolean correctAnswer = false;
@@ -123,8 +116,8 @@ public class GameController {
     }
 
     private boolean askReplayBaseball() {
-        String playerReplayInput = Console.readLine();
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String playerReplayInput = Console.readLine();
         validateReplayInputValidation(playerReplayInput);
         return playerReplayInput.equals("1");
     }

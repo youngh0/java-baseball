@@ -39,16 +39,6 @@ class PlayerInputValidatorTest {
     @Nested
     class 사용자_재식작_입력_유효성검사{
         @Test
-        void 재시작_입력에_1이_오면_true() {
-            assertThat(progressGameService.endGame("1")).isEqualTo(true);
-        }
-
-        @Test
-        void 재시작_입력에_2가_오면_false() {
-            assertThat(progressGameService.endGame("2")).isEqualTo(false);
-        }
-
-        @Test
         void 재시작_입력에_두글자_이상이_오면_예외_발생() {
             Assertions.assertThrows(IllegalArgumentException.class,
                     () -> playerInputValidator.validateReplayInputValidation("1234"));

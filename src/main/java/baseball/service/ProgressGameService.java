@@ -3,10 +3,8 @@ package baseball.service;
 import baseball.repository.BaseballResult;
 import baseball.utils.PlayerInputValidator;
 import baseball.view.InputView;
-import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
-import java.util.Objects;
 
 public class ProgressGameService {
     private PlayerInputValidator playerInputValidator;
@@ -22,10 +20,5 @@ public class ProgressGameService {
             List<Integer> playerInputAnswer = playerInputValidator.validatePlayerAnswerInput(playerAnswerInput);
             correctAnswer = new BaseballResult().progressJudgement(computerAnswer, playerInputAnswer);
         }
-    }
-
-    public boolean endGame(String playerReplayInput) {
-        playerInputValidator.validatePlayerReplayInput(playerReplayInput);
-        return Objects.equals(playerReplayInput, "1");
     }
 }

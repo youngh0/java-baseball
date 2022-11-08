@@ -6,6 +6,7 @@ import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ProgressGameService {
     private PlayerInputValidator playerInputValidator;
@@ -25,6 +26,6 @@ public class ProgressGameService {
 
     public boolean endGame(String playerReplayInput) {
         playerInputValidator.validatePlayerReplayInput(playerReplayInput);
-        return playerReplayInput.equals("1");
+        return Objects.equals(playerReplayInput, "1");
     }
 }

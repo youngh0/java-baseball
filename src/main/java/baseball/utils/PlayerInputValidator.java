@@ -15,6 +15,12 @@ public class PlayerInputValidator {
         return playerAnswerNumbers;
     }
 
+    public void validatePlayerReplayInput(String replayInput) {
+        if (!(replayInput.equals("1") || replayInput.equals("2"))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private List<Integer> convertStringToIntegerList(String nums) {
         List<Integer> integerList = new ArrayList<>();
         for (char num : nums.toCharArray()) {

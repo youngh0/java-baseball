@@ -24,7 +24,6 @@ public class ProgressGameService {
 
     public boolean endGame(String playerReplayInput) {
         playerInputValidator.validateReplayInputValidation(playerReplayInput);
-
         return playerReplayInput.equals("1");
     }
 }

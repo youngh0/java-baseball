@@ -7,8 +7,7 @@ public class InputView {
 
     public static String requestPlayerInput() {
         System.out.print(INPUT_PLAYER_ANSWER);
-        String playerAnswer = Console.readLine();
-        System.out.println();
-        return playerAnswer;
+        String playerInput = Console.readLine();
+        return playerInput;
     }
 }

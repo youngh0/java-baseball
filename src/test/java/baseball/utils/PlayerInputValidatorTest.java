@@ -36,4 +36,30 @@ class PlayerInputValidatorTest {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> playerInputValidator.validatePlayerAnswerInput("313"));
     }
+    @Nested
+    class 사용자_재식작_입력_유효성검사{
+        @Test
+        void 재시작_입력에_두글자_이상이_오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation("1234"));
+        }
+
+        @Test
+        void 재시작_입력에_아무것도_안오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation(""));
+        }
+
+        @Test
+        void 재시작_입력에_문자가_오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation(" "));
+        }
+
+        @Test
+        void 재시작_입력에_1_2를_제외한_숫자가_오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation("3"));
+        }
+    }
 }

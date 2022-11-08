@@ -1,18 +1,20 @@
 package baseball;
 
 import baseball.service.GameSettingService;
+import baseball.service.ProgressGameService;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
-    private final static int PLAYER_ANSWER_CORRECT_SIZE = 3;
-    private final static String PLAYER_ANSWER_REGEX = "^[1-9]*$";
+
     private GameSettingService gameSettingService;
+    private ProgressGameService progressGameService;
 
     public GameController() {
         gameSettingService = new GameSettingService();
+        progressGameService = new ProgressGameService();
     }
 
     public void startGame() {
@@ -28,52 +30,10 @@ public class GameController {
         List<Integer> baseballResult;
         boolean correctAnswer = false;
         while (!correctAnswer) {
-            String playerInput = Console.readLine();
-            List<Integer> playerInputAnswer = inputAnswer(playerInput);
+            List<Integer> playerInputAnswer = progressGameService.playGame(computerAnswer);
             baseballResult = judgeBaseballResult(computerAnswer, playerInputAnswer);
             showResult(baseballResult.get(0), baseballResult.get(1));
             correctAnswer = isThreeStrike(baseballResult.get(0));
-        }
-    }
-
-    private List<Integer> inputAnswer(String inputAnswer) {
-        validatePlayerInput(inputAnswer);
-        List<Integer> inputToIntegers = convertStringToIntegerList(inputAnswer);
-        validateIsNonDuplicateNums(inputToIntegers);
-        return inputToIntegers;
-    }
-
-    public void validatePlayerInput(String inputNumbers) {
-        validateThreeLength(inputNumbers);
-        validateSatisfiedRange(inputNumbers);
-    }
-
-    private List<Integer> convertStringToIntegerList(String nums) {
-        List<Integer> integerList = new ArrayList<>();
-        for (char num : nums.toCharArray()) {
-            integerList.add(Integer.parseInt(String.valueOf(num)));
-        }
-        return integerList;
-    }
-
-    private static void validateThreeLength(String inputNumbers) {
-        if (inputNumbers.length() != PLAYER_ANSWER_CORRECT_SIZE) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateSatisfiedRange(String inputNumbers) {
-        if (!inputNumbers.matches(PLAYER_ANSWER_REGEX)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void validateIsNonDuplicateNums(List<Integer> input) {
-        long individualNumberCount = input.stream()
-                .distinct()
-                .count();
-        if (individualNumberCount != PLAYER_ANSWER_CORRECT_SIZE) {
-            throw new IllegalArgumentException();
         }
     }
 

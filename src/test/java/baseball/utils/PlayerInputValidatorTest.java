@@ -1,17 +1,13 @@
 package baseball.utils;
 
-import baseball.service.ProgressGameService;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class PlayerInputValidatorTest {
     PlayerInputValidator playerInputValidator = new PlayerInputValidator();
-    ProgressGameService progressGameService = new ProgressGameService();
 
     @Test
     void 사용자_입력이_유효성_검사를_통과하면_리스트반환() {

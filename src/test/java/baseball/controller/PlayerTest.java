@@ -3,9 +3,12 @@ package baseball.controller;
 import baseball.Application;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -46,6 +49,13 @@ class PlayerTest extends NsTest {
                 assertThatThrownBy(() -> runException("414"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void validInputTest() {
+        Player player = new Player();
+        List<Integer> integers = player.inputAnswer("126");
+        Assertions.assertThat(integers).isEqualTo(List.of(1, 2, 6));
     }
 
     @Override

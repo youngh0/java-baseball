@@ -8,14 +8,17 @@ import java.util.List;
 
 public class ProgressGameService {
     private PlayerInputValidator playerInputValidator;
-    private BaseballResult baseballResult;
 
     public ProgressGameService() {
         playerInputValidator = new PlayerInputValidator();
     }
 
-    public List<Integer> playGame(List<Integer> computerAnswer) {
-        String playerAnswerInput = InputView.requestPlayerInput();
-        return playerInputValidator.validatePlayerAnswerInput(playerAnswerInput);
+    public void playGame(List<Integer> computerAnswer) {
+        boolean correctAnswer = false;
+        while (!correctAnswer) {
+            String playerAnswerInput = InputView.requestPlayerInput();
+            List<Integer> playerInputAnswer = playerInputValidator.validatePlayerAnswerInput(playerAnswerInput);
+            correctAnswer = new BaseballResult().progressJudgement(computerAnswer, playerInputAnswer);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package baseball.utils;
 
+import baseball.service.ProgressGameService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerInputValidatorTest {
     PlayerInputValidator playerInputValidator = new PlayerInputValidator();
+    ProgressGameService progressGameService = new ProgressGameService();
     @Nested
     class 사용자_정답_입력_유효성검사{
         @Test
@@ -41,9 +43,13 @@ class PlayerInputValidatorTest {
     @Nested
     class 사용자_재식작_입력_유효성검사{
         @Test
+        void 재시작_입력에_1가_오면_true() {
+            org.assertj.core.api.Assertions.assertThat(progressGameService.endGame("1")).isEqualTo(true);
+        }
+
+        @Test
         void 재시작_입력에_2가_오면_false() {
-            Assertions.assertThrows(IllegalArgumentException.class,
-                    () -> playerInputValidator.validatePlayerReplayInput("1234"));
+            org.assertj.core.api.Assertions.assertThat(progressGameService.endGame("2")).isEqualTo(false);
         }
 
         @Test

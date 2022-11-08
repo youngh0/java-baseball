@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Nested
 class PlayerInputValidatorTest {
     PlayerInputValidator playerInputValidator = new PlayerInputValidator();
     ProgressGameService progressGameService = new ProgressGameService();
@@ -35,5 +36,31 @@ class PlayerInputValidatorTest {
     void 사용자가_입력한_정답에_중복숫자가_있으면_예외발생() {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> playerInputValidator.validatePlayerAnswerInput("313"));
+    }
+    @Nested
+    class 사용자_재식작_입력_유효성검사{
+        @Test
+        void 재시작_입력에_두글자_이상이_오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation("1234"));
+        }
+
+        @Test
+        void 재시작_입력에_아무것도_안오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation(""));
+        }
+
+        @Test
+        void 재시작_입력에_문자가_오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation(" "));
+        }
+
+        @Test
+        void 재시작_입력에_1_2를_제외한_숫자가_오면_예외_발생() {
+            Assertions.assertThrows(IllegalArgumentException.class,
+                    () -> playerInputValidator.validateReplayInputValidation("3"));
+        }
     }
 }

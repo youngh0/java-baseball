@@ -21,19 +21,7 @@ public class GameController {
         while(replayGame){
             List<Integer> computerAnswer = gameSettingService.generateRandomThreeNumbers();
             progressGameService.playGame(computerAnswer);
-            replayGame = endGame();
-        }
-    }
-    private boolean endGame() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String playerReplayInput = Console.readLine();
-        validateReplayInputValidation(playerReplayInput);
-        return playerReplayInput.equals("1");
-    }
-
-    public void validateReplayInputValidation(String replayInput) {
-        if (!(replayInput.equals("1") || replayInput.equals("2"))) {
-            throw new IllegalArgumentException();
+            replayGame = progressGameService.endGame();
         }
     }
 }

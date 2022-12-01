@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.BaseballNumbers;
 import baseball.domain.BaseballResult;
 import baseball.domain.BaseballRule;
+import baseball.utils.RetryCommand;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -33,9 +34,8 @@ public class GameController {
         }
     }
 
-    //TODO: enum으로 리팩토링
     private boolean progressRetryGame() {
         String retryCommand = inputView.inputRetryCommand();
-        return retryCommand.equals("1");
+        return RetryCommand.find(retryCommand) == RetryCommand.RETRY;
     }
 }

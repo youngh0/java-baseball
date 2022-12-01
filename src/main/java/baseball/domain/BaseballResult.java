@@ -9,6 +9,10 @@ public class BaseballResult {
         this.ballCount = ballCount;
     }
 
+    public boolean isFinish() {
+        return strikeCount == 3;
+    }
+
     public StringBuffer getResultMessage() {
         StringBuffer result = new StringBuffer();
         if (strikeCount == 0 && ballCount == 0) {

@@ -3,10 +3,10 @@ package baseball.domain;
 import java.util.List;
 
 public class Referee {
-    public List<Integer> judgeBaseballGame(List<Integer> computer, List<Integer> playerAnswer) {
+    public BaseballResult judgeBaseballGame(List<Integer> computer, List<Integer> playerAnswer) {
         int strikeCount = countStrike(computer, playerAnswer);
         int ballCount = countBall(computer, playerAnswer);
-        return List.of(strikeCount, ballCount);
+        return new BaseballResult(strikeCount, ballCount);
     }
 
     private int countStrike(List<Integer> computer, List<Integer> playerAnswer) {

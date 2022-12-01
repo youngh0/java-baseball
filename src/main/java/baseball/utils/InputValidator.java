@@ -3,10 +3,18 @@ package baseball.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseballNumbersValidator {
+public class InputValidator {
     public static void validatePlayerBaseballInput(String baseballInputValue) {
         isOnlyDigit(baseballInputValue);
         isDuplicateBaseballNumbers(convertToBaseballNumber(baseballInputValue));
+    }
+
+    public static void validateRetryCommand(String retryCommand) {
+        String retryRegex = "[1-2]";
+        if (retryCommand.matches(retryRegex)) {
+            return;
+        }
+        throw new IllegalArgumentException();
     }
 
     private static void isOnlyDigit(String baseballInputValue) {

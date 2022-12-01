@@ -1,7 +1,7 @@
 package baseball.view;
 
 import baseball.domain.BaseballNumbers;
-import baseball.utils.BaseballNumbersValidator;
+import baseball.utils.InputValidator;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -23,8 +23,15 @@ public class InputView {
     public BaseballNumbers inputPlayerAnswer() {
         System.out.print("숫자를 입력해주세요: ");
         String inputAnswer = Console.readLine();
-        BaseballNumbersValidator.validatePlayerBaseballInput(inputAnswer);
+        InputValidator.validatePlayerBaseballInput(inputAnswer);
         return new BaseballNumbers(convertToBaseballNumbers(inputAnswer));
+    }
+
+    public String inputRetryCommand() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String retryCommand = Console.readLine();
+        InputValidator.validateRetryCommand(retryCommand);
+        return retryCommand;
     }
 
     private List<Integer> convertToBaseballNumbers(String inputAnswer) {

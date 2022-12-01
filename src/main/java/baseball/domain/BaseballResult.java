@@ -9,8 +9,8 @@ public class BaseballResult {
         this.ballCount = ballCount;
     }
 
-    public boolean isFinish() {
-        return strikeCount == 3;
+    public boolean isGameContinue() {
+        return strikeCount < 3;
     }
 
     public StringBuffer getResultMessage() {
